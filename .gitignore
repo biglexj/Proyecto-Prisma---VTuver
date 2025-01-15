@@ -1,0 +1,12 @@
+# Ignorar la carpeta test
+experimental/
+
+# Ignorar archivos de caché de Python
+__pycache__/
+
+# Ignorar entornos virtuales
+venv/
+.env/
+
+# Ignorar configuraciones específicas de IDEs
+.vscode/
