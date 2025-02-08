@@ -1,9 +1,9 @@
-import ollama as ollama  # Se usa en la función ollama_engine
-from chat_downloader import ChatDownloader  # Se usa en la función main para obtener el chat de YouTube
-import pyttsx3  # Se usa en la función speak para la síntesis de voz
+import ollama as ollama
+from chat_downloader import ChatDownloader
+import pyttsx3  
 from rapidfuzz import process  # Se usa en la función rule_resultado para encontrar coincidencias
 import random  # Se usa en la función rule_resultado para elegir respuestas aleatorias
-import json  # Se usa para cargar los archivos JSON con la personalidad y reglas de Ely
+import json  
 import re  # Se usa para filtrar el texto generado por Ollama
 
 # Ruta del archivo JSON con la personalidad de Ely
