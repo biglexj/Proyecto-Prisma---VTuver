@@ -1,10 +1,14 @@
-import ollama as ollama  # Se usa en la función ollama_engine
-from chat_downloader import ChatDownloader  # Se usa en la función main para obtener el chat de YouTube
-import pyttsx3  # Se usa en la función speak para la síntesis de voz
-from rapidfuzz import process  # Se usa en la función rule_resultado para encontrar coincidencias
-import random  # Se usa en la función rule_resultado para elegir respuestas aleatorias
-import json  # Se usa para cargar los archivos JSON con la personalidad y reglas de Ely
-import re  # Se usa para filtrar el texto generado por Ollama
+from chat_downloader import ChatDownloader
+import test.ollama as ollama
+import torch
+from TTS.api import TTS
+import sounddevice as sd
+import numpy as np
+import os
+import json
+import random
+import re
+import rapidfuzz
 
 # Ruta del archivo JSON con la personalidad de Ely
 ruta = "data/ely_personality.json"
@@ -29,6 +33,10 @@ ely_personality_text = (
     "Humor: " + ely_personality["humor"]
 )
 
+# Entrada de YouTube Live
+imput_YT = "que haces en youtube"  # Esta es la pregunta que se hace
+
+
 # Función para buscar una respuesta
 def rule_resultado(chat_YT):
     for clave, valor in ely_rules.items():
@@ -40,16 +48,67 @@ def rule_resultado(chat_YT):
                 return valor["respuesta"]
     return "Toma un criterio neutral a las preguntas con un poco de sarcasmo de vez en cuando."
 
-# Función para la síntesis de voz con pyttsx3
-def speak(text):
-    try:
-        engine = pyttsx3.init()
-        engine.say(text)
-        engine.runAndWait()
-    except Exception as e:
-        print(f"✗ Error al reproducir el texto: {e}")
 
-contexto = []
+# Llamar a la función para obtener la respuesta correcta
+respuesta = rule_resultado(imput_YT)
+
+# Preparar el mensaje del prompt combinando el contexto y la respuesta
+# El prompt contiene toda la información relevante: personalidad de Ely, respuesta y la pregunta
+# Crear el prompt explícito
+prompt = (
+    f"Tu personalidad es la siguiente: {ely_personality_text}\n"  # Se define claramente la personalidad de Ely
+    f"La pregunta que te hacen es: {imput_YT}\n"  # Contexto de la pregunta del usuario
+    f"Tu respuesta debe ser breve, concisa y acorde a tu personalidad.\n"  # Instrucción clara
+    f"Responde como {ely_personality['nombre']} y asegúrate de mantener tu tono característico.\n"
+)
+
+
+# Llama al modelo de Ollama
+response = ollama.chat(
+    model="llama3.2",
+    messages=[
+        {"role": "user", "content": prompt}
+    ]
+)
+response["message"]["content"]
+
+generated_text = response["message"]["content"]  # Obtén el texto generado
+
+print("Ely VTuber:", generated_text)  # Imprime la respuesta generada
+
+
+# Verificar que el archivo de modelo de voz existe
+file_path = "model_voz/cloning/Ely_model.wav"
+if os.path.exists(file_path):
+    print(f"El archivo '{file_path}' existe y está listo para usarse.")
+else:
+    raise FileNotFoundError(f"El archivo '{file_path}' no se encuentra. Verifica la ruta.")
+
+
+# Carga el modelo de Coqui TTS
+device = "cuda" if torch.cuda.is_available() else "cpu"
+tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+
+# Generar audio directamente y reproducirlo
+def synthesize_and_play_immediately(filtered_text, speaker_path, language="es"):
+    # Generar la forma de onda directamente desde el modelo TTS
+    audio_waveform = tts.tts(
+        text=filtered_text, 
+        speaker_wav=speaker_path, 
+        language=language
+    )
+    
+    # Normalizar la señal de audio
+    audio_waveform = np.array(audio_waveform, dtype=np.float32)
+    audio_waveform /= np.max(np.abs(audio_waveform))
+    
+    # Configurar la frecuencia de muestreo (asegúrate de usar la misma frecuencia que el modelo)
+    samplerate = 22050  # Cambia este valor si tu modelo usa una frecuencia diferente
+    
+    # Reproducir el audio
+    sd.play(audio_waveform, samplerate)
+    sd.wait()  # Esperar hasta que termine la reproducción
+
 def agregar_contexto(texto):
     if len(contexto) > 10:  # Limitar la memoria
         contexto.pop(0)
@@ -76,7 +135,12 @@ def main():
             if response:
                 filtered_text = re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip()
                 print("Ely VTuber:", filtered_text)
-                speak(filtered_text)
+
+                # Definir la ruta del archivo de modelo de voz
+                speaker_path = "model_voz/cloning/Ely_model.wav"
+
+                # Llamar a la función para sintetizar y reproducir
+                synthesize_and_play_immediately(filtered_text, speaker_path=speaker_path)
 
 # Función para obtener la respuesta de Ollama
 def ollama_engine(chat_text, personality_text, rule_resultado):
