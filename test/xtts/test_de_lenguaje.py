@@ -2,7 +2,6 @@ from chat_downloader import ChatDownloader
 import torch
 from TTS.api import TTS
 import sounddevice as sd
-import numpy as np
 from scipy.io import wavfile
 
 
