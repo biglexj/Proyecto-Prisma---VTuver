@@ -10,3 +10,6 @@ venv/
 
 # Ignorar configuraciones específicas de IDEs
 .vscode/
+
+# Ignorar xtts_project
+xtts_project/
