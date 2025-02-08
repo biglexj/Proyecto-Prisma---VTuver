@@ -8,7 +8,7 @@ import os
 import json
 import random
 import re
-import rapidfuzz
+import process # Importar la librería de procesamiento de texto
 
 # Ruta del archivo JSON con la personalidad de Ely
 ruta = "data/ely_personality.json"

@@ -1,5 +1,4 @@
 from chat_downloader import ChatDownloader
-import test.ollama as ollama
 import torch
 from TTS.api import TTS
 import sounddevice as sd
@@ -7,7 +6,7 @@ import numpy as np
 from scipy.io import wavfile
 
 
-generated_text = "EEs es una prueba de idioma ¿que? no se"
+generated_text = "Es es una prueba de idioma ¿que? no se"
 
 
 print("Ely VTuber:", generated_text)  # Imprime la respuesta generada
@@ -20,9 +19,9 @@ texto = generated_text
 #texto = texto.replace("¿", "").replace("¡", "") el modelo xtts si soporta.
 
 # Generar y guardar el archivo de audio
-wav = tts.tts(text= texto, speaker_wav="model_voz/cloning/Ely_model.wav", language="es")
+wav = tts.tts(text= texto, speaker_wav="../../model_voz/cloning/Ely_model.wav", language="es")
 # Text to speech to a file
-tts.tts_to_file(text= texto, speaker_wav="model_voz/cloning/Ely_model.wav", language="es", file_path="output.wav")
+tts.tts_to_file(text= texto, speaker_wav="../../ymodel_voz/cloning/Ely_model.wav", language="es", file_path="output.wav")
 
 # Reproducir el archivo generado con sounddevice
 def play_audio(file_path):
