@@ -1,2 +1,8 @@
-chat_downloader
 ollama
+chat_downloader
+pyttsx3
+rapidfuzz
+time
+random
+json
+re

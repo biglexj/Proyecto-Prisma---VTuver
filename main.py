@@ -1,11 +1,11 @@
-from chat_downloader import ChatDownloader
-import ollama as ollama
-import pyttsx3
-import time
-from rapidfuzz import process
-import random
-import json
-import re
+import ollama as ollama  # Se usa en la función ollama_engine
+from chat_downloader import ChatDownloader  # Se usa en la función main para obtener el chat de YouTube
+import pyttsx3  # Se usa en la función speak para la síntesis de voz
+import time  # No se usa en el código actual
+from rapidfuzz import process  # Se usa en la función rule_resultado para encontrar coincidencias
+import random  # Se usa en la función rule_resultado para elegir respuestas aleatorias
+import json  # Se usa para cargar los archivos JSON con la personalidad y reglas de Ely
+import re  # Se usa para filtrar el texto generado por Ollama
 
 # Ruta del archivo JSON con la personalidad de Ely
 ruta = "data/ely_personality.json"
@@ -34,13 +34,11 @@ ely_personality_text = (
 def rule_resultado(chat_YT):
     for clave, valor in ely_rules.items():
         if "pregunta" in valor:
-            # Usar rapidfuzz para encontrar coincidencias
             match = process.extractOne(chat_YT, valor["pregunta"])
-            if match and match[1] > 80:  # Coincidencia > 80%
-                if "respuesta_1" in valor:  # Si hay varias respuestas
+            if match and match[1] > 80:
+                if "respuesta_1" in valor:
                     return random.choice([valor["respuesta_1"], valor["respuesta_2"]])
                 return valor["respuesta"]
-    # Respuesta por defecto si no hay coincidencia
     return "Toma un criterio neutral a las preguntas con un poco de sarcasmo de vez en cuando."
 
 # Función para la síntesis de voz con pyttsx3
@@ -63,8 +61,7 @@ def obtener_contexto():
 
 # Definir la función principal para el chat
 def main():
-    # Entrada de YouTube Live
-    url = "https://www.youtube.com/watch?v=f6Nw2W5vQXo"  # URL del video o stream en vivo
+    url = "https://www.youtube.com/watch?v=f6Nw2W5vQXo"
     chat = ChatDownloader().get_chat(url)
     
     for chat_YT in chat:
@@ -75,8 +72,7 @@ def main():
             chat_text = author_name + ": " + message
             print(chat_text)
             resultado = rule_resultado(message)
-            # Obtener la respuesta de Ollama
-            response = ollama_engine(chat_text, ely_personality_text, rule_resultado)
+            response = ollama_engine(chat_text, ely_personality_text, resultado)
             
             if response:
                 filtered_text = re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip()
@@ -85,7 +81,6 @@ def main():
 
 # Función para obtener la respuesta de Ollama
 def ollama_engine(chat_text, personality_text, rule_resultado):
-    """Get response from Ollama"""
     prompt = (
         f"Tu personalidad es la siguiente: {personality_text}\n"
         f"La pregunta que te hacen es: {chat_text}\n"
@@ -106,6 +101,5 @@ def ollama_engine(chat_text, personality_text, rule_resultado):
         print(f"✗ Error getting Ollama response: {e}")
         return None
 
-# Llamada a la función principal
 if __name__ == "__main__":
     main()
