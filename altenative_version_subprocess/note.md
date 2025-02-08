@@ -1,0 +1,1 @@
+Esta versión esta descontinuada, lo cree en su momento porque me daba error de lectura de voz con PyAuido/pyttsx3.
