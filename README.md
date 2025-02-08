@@ -1,4 +1,4 @@
-# Proyecto-Prisma---VTuver
+# Proyecto-Prisma---VTuver--Versión XTTS
 
 ## Descripción
 Proyecto-Prisma es una aplicación interactiva que simula una VTuber llamada Ely. Ely es una VTuber virtual enérgica y amigable, diseñada para interactuar con los usuarios a través de chats en vivo de YouTube, respondiendo preguntas y generando respuestas de manera dinámica y entretenida.

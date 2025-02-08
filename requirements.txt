@@ -1,6 +1,6 @@
 ollama
 chat_downloader
-pyttsx3
+tts
 rapidfuzz
 random
 json

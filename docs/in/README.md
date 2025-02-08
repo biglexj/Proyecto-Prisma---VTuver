@@ -1,4 +1,4 @@
-# Project-Prisma---VTuver---English---version
+# Project-Prisma---VTuver---English---version XTTS
 
 ## Description
 Project-Prisma is an interactive application that simulates a VTuber named Ely. Ely is an energetic and friendly virtual assistant designed to interact with users through live YouTube chats, answering questions and generating responses dynamically and entertainingly.
