@@ -109,6 +109,7 @@ def synthesize_and_play_immediately(filtered_text, speaker_path, language="es"):
     sd.play(audio_waveform, samplerate)
     sd.wait()  # Esperar hasta que termine la reproducción
 
+contexto = []
 def agregar_contexto(texto):
     if len(contexto) > 10:  # Limitar la memoria
         contexto.pop(0)
