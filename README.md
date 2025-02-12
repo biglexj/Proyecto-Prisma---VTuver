@@ -1,24 +1,13 @@
-# Proyecto-Prisma---VTuver
+# Proyecto-Prisma---VTuver--Versión XTTS
 
-## Descripción
-Proyecto-Prisma es una aplicación interactiva que simula una VTuber llamada Ely. Ely es una VTuber virtual enérgica y amigable, diseñada para interactuar con los usuarios a través de chats en vivo de YouTube, respondiendo preguntas y generando respuestas de manera dinámica y entretenida.
+## Explicación del Proyecto
 
-## Características
-- **Interacción en tiempo real**: Ely puede responder a preguntas en tiempo real durante transmisiones en vivo de YouTube.
-- **Personalidad definida**: Ely tiene una personalidad bien definida, con características como su nombre, estilo visual, tono de voz, habilidades y más.
-- **Respuestas personalizadas**: Ely utiliza reglas predefinidas para responder a preguntas comunes y generar respuestas coherentes con su personalidad.
-- **Síntesis de voz**: Ely puede convertir texto a voz utilizando PowerShell para una experiencia más inmersiva.
-- **Integración con modelos de lenguaje**: Ely utiliza el modelo de lenguaje Ollama para generar respuestas más complejas y naturales.
+### Descripción General
+Proyecto-Prisma es una aplicación interactiva que simula una VTuber llamada Ely. Ely está diseñada para interactuar con los usuarios en transmisiones en vivo de YouTube, respondiendo preguntas y generando respuestas de manera dinámica y entretenida. Utiliza modelos avanzados de lenguaje y síntesis de voz para proporcionar una experiencia inmersiva y realista.
 
-## Estructura del Proyecto
-El proyecto está organizado de la siguiente manera:
-- `main.py`: Archivo principal que maneja la interacción en tiempo real con el chat de YouTube, genera respuestas utilizando el modelo de lenguaje Ollama y sintetiza la voz de Ely.
-- `data/ely_personality.json`: Archivo JSON que contiene la personalidad definida de Ely.
-- `data/ely_rules.json`: Archivo JSON que contiene las reglas predefinidas para responder a preguntas comunes.
-- `experimental/`: Directorio con scripts experimentales y pruebas.
+### Funcionamiento de `main.py`
+El archivo `main.py` es el núcleo del proyecto y realiza las siguientes tareas:
 
-## Funcionamiento de `main.py`
-El archivo `main.py` realiza las siguientes tareas:
 1. **Carga de Datos**:
    - Carga la personalidad de Ely desde un archivo JSON (`data/ely_personality.json`).
    - Carga las reglas predefinidas para responder preguntas desde otro archivo JSON (`data/ely_rules.json`).
@@ -37,6 +26,12 @@ El archivo `main.py` realiza las siguientes tareas:
    - Convierte la respuesta generada a voz utilizando el modelo TTS de Coqui.
    - Reproduce el audio generado en tiempo real para que Ely pueda "hablar" en la transmisión en vivo.
 
+### Estructura del Proyecto
+- `main.py`: Archivo principal que maneja la interacción en tiempo real con el chat de YouTube, genera respuestas utilizando el modelo de lenguaje Ollama y sintetiza la voz de Ely.
+- `data/ely_personality.json`: Archivo JSON que contiene la personalidad definida de Ely.
+- `data/ely_rules.json`: Archivo JSON que contiene las reglas predefinidas para responder a preguntas comunes.
+- `experimental/`: Directorio con scripts experimentales y pruebas.
+
 ### Tecnologías Utilizadas
 - **Python**: Lenguaje de programación principal del proyecto.
 - **ChatDownloader**: Biblioteca para descargar y procesar chats en vivo de YouTube.
@@ -54,15 +49,13 @@ Para instalar y ejecutar el proyecto, sigue estos pasos:
    cd Proyecto-Prisma---VTuver
 
 2. Instala las dependencias:
-   ```sh
-   pip install -r requirements.txt
+    pip install -r requirements.txt
 
 3. Ejecuta el archivo principal:
-   ```sh
-   python main.py
+    python main.py
 
 Contribuciones
 Las contribuciones son bienvenidas. Si deseas contribuir, por favor abre un issue o envía un pull request.
 
 Licencia
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles. 

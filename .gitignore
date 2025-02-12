@@ -4,11 +4,13 @@ experimental/
 # Ignorar archivos de caché de Python
 __pycache__/
 test/__pycache__/
+
 # Ignorar entornos virtuales
 .venv/
 .env/
 
 # Ignorar configuraciones específicas de IDEs
 .vscode/
-# Ignorar archivos de configuración de Test
+
+#Ignorar archivos test
 test/

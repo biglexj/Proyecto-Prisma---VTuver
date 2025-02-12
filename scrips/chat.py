@@ -1,7 +1,8 @@
 from googleapiclient.discovery import build
 
 # Configura tu clave API de YouTube
-api_key = 'Tu Api Key'
+xtts-project
+api_key = 'Tu api key'
 youtube = build('youtube', 'v3', developerKey=api_key)
 
 # Obtén el ID del video en vivo
