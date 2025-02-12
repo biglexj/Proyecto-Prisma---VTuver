@@ -10,3 +10,5 @@ test/__pycache__/
 
 # Ignorar configuraciones específicas de IDEs
 .vscode/
+# Ignorar archivos de configuración de Test
+test/
