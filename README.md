@@ -49,10 +49,12 @@ Para instalar y ejecutar el proyecto, sigue estos pasos:
    cd Proyecto-Prisma---VTuver
 
 2. Instala las dependencias:
-    pip install -r requirements.txt
+   ```sh
+   pip install -r requirements.txt
 
 3. Ejecuta el archivo principal:
-    python main.py
+   ```sh
+   python main.py
 
 Contribuciones
 Las contribuciones son bienvenidas. Si deseas contribuir, por favor abre un issue o envía un pull request.
