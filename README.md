@@ -1,27 +1,23 @@
-# Proyecto-Prisma---VTuver--Versión XTTS
+Proyecto de Chat de YouTube con Síntesis de Voz
+Este proyecto permite descargar y procesar chats en vivo de YouTube, generando respuestas automáticas y sintetizando audio para reproducir las respuestas.
 
-## Descripción
-Proyecto-Prisma es una aplicación interactiva que simula una VTuber llamada Ely. Ely es una VTuber virtual enérgica y amigable, diseñada para interactuar con los usuarios a través de chats en vivo de YouTube, respondiendo preguntas y generando respuestas de manera dinámica y entretenida.
-
-## Características
-- **Interacción en tiempo real**: Ely puede responder a preguntas en tiempo real durante transmisiones en vivo de YouTube.
-- **Personalidad definida**: Ely tiene una personalidad bien definida, con características como su nombre, estilo visual, tono de voz, habilidades y más.
-- **Respuestas personalizadas**: Ely utiliza reglas predefinidas para responder a preguntas comunes y generar respuestas coherentes con su personalidad.
-- **Síntesis de voz**: Ely puede convertir texto a voz utilizando PowerShell para una experiencia más inmersiva.
-- **Integración con modelos de lenguaje**: Ely utiliza el modelo de lenguaje Ollama para generar respuestas más complejas y naturales.
-
-## Estructura del Proyecto
-El proyecto está organizado de la siguiente manera:
-- `main.py`: Archivo principal que maneja la interacción en tiempo real con el chat de YouTube, genera respuestas utilizando el modelo de lenguaje Ollama y sintetiza la voz de Ely.
-- `data/ely_personality.json`: Archivo JSON que contiene la personalidad definida de Ely.
-- `data/ely_rules.json`: Archivo JSON que contiene las reglas predefinidas para responder a preguntas comunes.
-- `experimental/`: Directorio con scripts experimentales y pruebas.
-
-## Funcionamiento de `main.py`
-El archivo `main.py` realiza las siguientes tareas:
-1. Carga la personalidad y las reglas de Ely desde archivos JSON.
-2. Conecta con el chat en vivo de YouTube utilizando `ChatDownloader`.
-3. Procesa cada mensaje del chat, buscando coincidencias con las reglas predefinidas.
-4. Genera una respuesta utilizando el modelo de lenguaje Ollama.
-5. Filtra el texto generado para eliminar análisis internos.
-6. Convierte la respuesta a voz utilizando `pyttsx3`.
+Características
+Descarga de Chats en Vivo: Utiliza ChatDownloader para conectarse y descargar mensajes de chat en vivo desde YouTube.
+Procesamiento de Mensajes: Extrae y procesa mensajes de chat, incluyendo el nombre del autor y el contenido del mensaje.
+Generación de Respuestas: Utiliza ollama_engine para generar respuestas basadas en el texto del chat y una personalidad definida.
+Síntesis de Voz: Convierte las respuestas generadas en audio utilizando un modelo de voz predefinido.
+Gestión de Contexto: Mantiene un historial de contexto limitado para mejorar la coherencia de las respuestas.
+Requisitos
+Python 3.11.9 usado
+Paquetes de Python: ChatDownloader, re, os, torch, sounddevice, entre otros.
+Uso
+Clona el repositorio.
+Instala los paquetes necesarios utilizando pip:
+Ejecuta el script main.py para iniciar la descarga y procesamiento del chat.
+Ejemplo de Ejecución
+Estructura del Proyecto
+main.py: Script principal que maneja la descarga y procesamiento del chat.
+model_voz/: Directorio que contiene el modelo de voz utilizado para la síntesis de audio.
+Notas
+Asegúrate de que el archivo de modelo de voz (Ely_model.wav) esté presente en el directorio model_voz/cloning/.
+El script maneja excepciones y errores comunes, proporcionando mensajes de error claros.
