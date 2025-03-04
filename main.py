@@ -1,5 +1,5 @@
 from chat_downloader import ChatDownloader
-import test.ollama as ollama
+from test import ollama
 import torch
 from TTS.api import TTS
 import sounddevice as sd
@@ -96,7 +96,7 @@ def obtener_contexto():
 
 # Definir la función principal para el chat
 def main():
-    url = "https://www.youtube.com/watch?v=f6Nw2W5vQXo"
+    url = "https://www.youtube.com/watch?v=8_vRfMXWl98&t=444so"
     try:
         chat = ChatDownloader().get_chat(url)
     except Exception as e:
