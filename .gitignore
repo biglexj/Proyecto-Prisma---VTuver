@@ -3,11 +3,6 @@ experimental/
 
 # Ignorar archivos de caché de Python
 __pycache__/
-<<<<<<< HEAD
-__pycache__/
-=======
-test/__pycache__/
->>>>>>> 7361cc1416d706a28bf4cdc8c35274616195e166
 
 # Ignorar entornos virtuales
 .venv/
@@ -21,6 +16,3 @@ test/
 
 # Ignorar archivos de configuración de Test
 test_main.py
-
-altenative_version_subprocess/
-scrips/chat.py
