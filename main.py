@@ -11,7 +11,7 @@ import re
 from rapidfuzz import process  # Se usa en la función rule_resultado para encontrar coincidencias
 
 # Ruta del archivo JSON con la personalidad de Ely
-ruta = "data/ely_personality.json"
+ruta = "context/json/ely_personality.json"
 
 # Cargar el JSON con la rule
 try:
@@ -23,10 +23,10 @@ except json.JSONDecodeError:
     raise ValueError(f"El archivo '{ruta}' no es un JSON válido.")
 
 try:
-    with open("data/ely_rules.json", "r", encoding="utf-8") as file:
+    with open("context/json/ely_rules.json", "r", encoding="utf-8") as file:
         ely_rules = json.load(file)
 except FileNotFoundError:
-    raise FileNotFoundError("El archivo 'data/ely_rules.json' no se encuentra. Verifica la ruta.")
+    raise FileNotFoundError("El archivo 'context/json/ely_rules.json' no se encuentra. Verifica la ruta.")
 except json.JSONDecodeError:
     raise ValueError("El archivo 'data/ely_rules.json' no es un JSON válido.")
 
@@ -117,7 +117,7 @@ def main():
                 print("Ely VTuber:", filtered_text)
 
                 # Definir la ruta del archivo de modelo de voz
-                speaker_path = "model_voz/cloning/Ely_model.wav"
+                speaker_path = "voices/Ely_model.wav"
 
                 # Verificar que el archivo de modelo de voz existe
                 if not os.path.exists(speaker_path):
