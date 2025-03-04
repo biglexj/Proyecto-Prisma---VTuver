@@ -3,7 +3,7 @@ experimental/
 
 # Ignorar archivos de caché de Python
 __pycache__/
-test/__pycache__/
+__pycache__/
 
 # Ignorar entornos virtuales
 .venv/
