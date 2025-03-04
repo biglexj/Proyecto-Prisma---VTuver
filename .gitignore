@@ -1,0 +1,22 @@
+# Ignorar la carpeta test
+experimental/
+
+# Ignorar archivos de caché de Python
+__pycache__/
+__pycache__/
+
+# Ignorar entornos virtuales
+.venv/
+.env/
+
+# Ignorar configuraciones específicas de IDEs
+.vscode/
+
+#Ignorar archivos test
+test/
+
+# Ignorar archivos de configuración de Test
+test_main.py
+
+altenative_version_subprocess/
+scrips/chat.py
