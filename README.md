@@ -28,8 +28,13 @@ El archivo `main.py` es el núcleo del proyecto y realiza las siguientes tareas:
 
 ### Estructura del Proyecto
 - `main.py`: Archivo principal que maneja la interacción en tiempo real con el chat de YouTube, genera respuestas utilizando el modelo de lenguaje Ollama y sintetiza la voz de Ely.
+<<<<<<< HEAD
 - `context/json/ely_personality.json`: Archivo JSON que contiene la personalidad definida de Ely.
 - `context/json/ely_rules.json`: Archivo JSON que contiene las reglas predefinidas para responder a preguntas comunes.
+=======
+- `data/ely_personality.json`: Archivo JSON que contiene la personalidad definida de Ely.
+- `data/ely_rules.json`: Archivo JSON que contiene las reglas predefinidas para responder a preguntas comunes.
+>>>>>>> 7361cc1416d706a28bf4cdc8c35274616195e166
 - `experimental/`: Directorio con scripts experimentales y pruebas.
 
 ### Tecnologías Utilizadas

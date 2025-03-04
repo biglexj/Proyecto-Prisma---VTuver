@@ -1,7 +1,0 @@
-ollama
-chat_downloader
-tts
-rapidfuzz
-random
-json
-re
